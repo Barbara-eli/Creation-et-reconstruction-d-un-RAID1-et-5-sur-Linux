@@ -197,34 +197,64 @@ La reconstruction du RAID 5 prendra plus de temps que celle du RAID 1.
 >
 >sudo mdadm --detail /dev/md0
 >
-cat /proc/mdstat
-sudo mkfs.ext4 /dev/md0
-sudo mkdir /mnt/raid1
-sudo mount /dev/md0 /mnt/raid1
-sudo blkid /dev/md0
-sudo nano /etc/fstab
-sudo mount -a
-sudo mdadm --fail /dev/md0 /dev/sdb
-sudo mdadm --remove /dev/md0 /dev/sdb
-sudo mdadm --detail /dev/md0
-sudo mdadm --add /dev/md0 /dev/sdb
-sudo mdadm --detail /dev/md0
-cat /proc/mdstat
-sudo umount /mnt/raid1
-sudo mdadm --stop /dev/md0
-sudo mdadm --remove /dev/md0
-sudo mdadm --create --verbose /dev/md0 --level=5 --raid-devices=3 /dev/sdb /dev/sdc /dev/sdd
-sudo mdadm --detail /dev/md0
-cat /proc/mdstat
-sudo mkfs.ext4 /dev/md0
-sudo mkdir /mnt/raid5
-sudo mount /dev/md0 /mnt/raid5
-sudo blkid /dev/md0
-sudo nano /etc/fstab
-sudo mount -a
-sudo mdadm --fail /dev/md0 /dev/sdb
-sudo mdadm --remove /dev/md0 /dev/sdb
-sudo mdadm --detail /dev/md0
-sudo mdadm --add /dev/md0 /dev/sdb
-sudo mdadm --detail /dev/md0
-cat /proc/mdstat
+>cat /proc/mdstat
+>
+>sudo mkfs.ext4 /dev/md0
+>
+>sudo mkdir /mnt/raid1
+>
+>sudo mount /dev/md0 /mnt/raid1
+>
+>sudo blkid /dev/md0
+>
+>sudo nano /etc/fstab
+>
+>sudo mount -a
+>
+>sudo mdadm --fail /dev/md0 /dev/sdb
+>
+>sudo mdadm --remove /dev/md0 /dev/sdb
+>
+>sudo mdadm --detail /dev/md0
+>
+>sudo mdadm --add /dev/md0 /dev/sdb
+>
+>sudo mdadm --detail /dev/md0
+>
+>cat /proc/mdstat
+>
+>sudo umount /mnt/raid1
+>
+>sudo mdadm --stop /dev/md0
+>
+>sudo mdadm --remove /dev/md0
+>
+>sudo mdadm --create --verbose /dev/md0 --level=5 --raid-devices=3 /dev/sdb /dev/sdc /dev/sdd
+>
+>sudo mdadm --detail /dev/md0
+>
+>cat /proc/mdstat
+>
+>sudo mkfs.ext4 /dev/md0
+>
+>sudo mkdir /mnt/raid5
+>
+>sudo mount /dev/md0 /mnt/raid5
+>
+>sudo blkid /dev/md0
+>
+>sudo nano /etc/fstab
+>
+>sudo mount -a
+>
+>sudo mdadm --fail /dev/md0 /dev/sdb
+>
+>sudo mdadm --remove /dev/md0 /dev/sdb
+>
+>sudo mdadm --detail /dev/md0
+>
+>sudo mdadm --add /dev/md0 /dev/sdb
+>
+>sudo mdadm --detail /dev/md0
+>
+>cat /proc/mdstat
