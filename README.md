@@ -1,36 +1,36 @@
 # Creation-et-reconstruction-d-un-RAID1-et-5-sur-Linux
 
-Création et Reconstitution d'un RAID 1
-Étape 1: Identification des Disques
+## Création et Reconstitution d'un RAID 1
+### Étape 1: Identification des Disques
 Identifiez vos disques. La commande lsblk est un bon point de départ.
 
-lsblk
+**lsblk**
 
 Exemple de sortie:
 
-NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
-sda 8:0 0 20G 0 disk
-├─sda1 8:1 0 512M 0 part /boot/efi
-├─sda2 8:2 0 1G 0 part /boot
-└─sda3 8:3 0 18.5G 0 part /
-sdb 8:16 0 10G 0 disk
-sdc 8:32 0 10G 0 disk
-sdd 8:48 0 10G 0 disk
+>NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+>sda 8:0 0 20G 0 disk
+>├─sda1 8:1 0 512M 0 part /boot/efi
+>├─sda2 8:2 0 1G 0 part /boot
+>└─sda3 8:3 0 18.5G 0 part /
+>sdb 8:16 0 10G 0 disk
+>sdc 8:32 0 10G 0 disk
+>sdd 8:48 0 10G 0 disk
 
 Dans cet exemple, sdb et sdc (puis sdd pour le RAID 5) seront utilisés.
 
-Étape 2: Création du RAID 1
-sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc
+### Étape 2: Création du RAID 1
+**sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc**
 
-sudo mdadm --create /dev/md0: Crée un nouveau RAID nommé /dev/md0.
+* sudo mdadm --create /dev/md0: Crée un nouveau RAID nommé /dev/md0.
 
---verbose: Affiche des informations détaillées pendant la création.
+* --verbose: Affiche des informations détaillées pendant la création.
 
---level=1: Spécifie le niveau RAID 1 (mirroring).
+* --level=1: Spécifie le niveau RAID 1 (mirroring).
 
---raid-devices=2: Indique que le RAID comportera 2 disques.
+*--raid-devices=2: Indique que le RAID comportera 2 disques.
 
-/dev/sdb /dev/sdc: Les périphériques qui seront utilisés dans le RAID.
+* /dev/sdb /dev/sdc: Les périphériques qui seront utilisés dans le RAID.
 
 Étape 3: Surveiller la Création du RAID
 La création du RAID prendra un certain temps. On peut surveiller sa progression avec:
